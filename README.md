@@ -5,7 +5,9 @@ file: generate_Laguerre_Gauss_SLM.py
 
 USAGE EXAMPLES
 python generate_Laguerre_Gauss_SLM.py -c 10 (image generated is not sent to the SLM)
+
 python generate_Laguerre_Gauss_SLM.py -c 10 -b (add -b to save image as LG_ch_10.bmp)
+
 python generate_Laguerre_Gauss_SLM.py -c -5 -m -s (LG beam charge -5, use correction mask and image sent to SLM) 
 
 To exit, press 'q' after clicking on the 'phase mask' window.
