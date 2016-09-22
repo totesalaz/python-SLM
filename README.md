@@ -5,7 +5,7 @@ Set of routines in Python used to control a Spatial Light Modulator. It is assum
 * opencv
 * numpy
 * wxPython 
-* slmpy (that can be downloaded from [Sébastien's POPOFF](http://wavefrontshaping.net/index.php/57-community/tutorials/spatial-lights-modulators-slms/124-how-to-control-a-slm-with-python)) page.
+* slmpy (file that can be downloaded from [Sébastien's POPOFF](http://wavefrontshaping.net/index.php/57-community/tutorials/spatial-lights-modulators-slms/124-how-to-control-a-slm-with-python)) page.
 
 ## Files
 
