@@ -27,6 +27,8 @@ To use the function, just write `python generate_Laguerre_Gauss_SLM.py [options]
 * -m when added, the SLM correction mask provided by the manufacturer is applied to the phase mask.
 * -b when added, the image of the phase mask is stored in the bmp file "LG_ch_CHARGE.bmp", where **CHARGE** is specified with the option -c.
 
+The correction mask file has to be stored in the same folder as the python file. To change the mask name, just change the line 133 (change **mask_750nm.bmp**) according to your file.
+
 To exit, press 'q' after clicking on the 'phase mask' window.
 
 #### Usage examples
