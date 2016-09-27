@@ -33,7 +33,6 @@ The correction mask file has to be stored in the same folder as the python file.
 To exit, press 'q' after clicking on the 'phase mask' window.
 
 #### Usage examples
-
 * Use `python generate_Laguerre_Gauss_SLM.py -c 10`, to generate a phase mask (LG beam charge +10) that is shown only in the main screen.
 * To save the image in a bmp file, use `python generate_Laguerre_Gauss_SLM.py -c 10 -b`. The file will be saved as **LG_ch_10.bmp**.
 * To generate and send to the SLM a phase mask for a LG beam with charge -5, use `python generate_Laguerre_Gauss_SLM.py -c -5 -m -s`. Notice that the option **-m** specifies to use the correction mask provided by the manufacturer.
@@ -45,8 +44,6 @@ The whole image is sent to the second monitor output where the SLM is connected.
 
 #### How to use it
 To use the function, just write `python generate_Laguerre_Gauss_split_SLM.py [options]`, where the options are the following:
-
->> python generate_Laguerre_Gauss_split_SLM.py [list of arguments] where: 
 
 * -c CHARGE sets the **CHARGE** of the LG beam. Two indices are required.
 * -w RADIUS use this option to put a circular mask centered in the screen center with radius **RADIUS**.
