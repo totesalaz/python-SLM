@@ -31,9 +31,9 @@ http://wavefrontshaping.net/index.php/57-community/tutorials/spatial-lights-modu
              
 Usage examples:
 
->>python generate_Laguerre_Gauss_SLM.py -c 10 (image generated is not sent to the SLM)
->>python generate_Laguerre_Gauss_SLM.py -c 10 -b (add -b to save image as LG_ch_10.bmp)
->>python generate_Laguerre_Gauss_SLM.py -c -5 -m -s (LG beam charge -5, use correction mask and image sent to SLM) 
+>>python LaguerreGauss.py -c 10 (image generated is not sent to the SLM)
+>>python LaguerreGauss.py -c 10 -b (add -b to save image as LG_ch_10.bmp)
+>>python LaguerreGauss.py -c -5 -m -s (LG beam charge -5, use correction mask and image sent to SLM) 
 
 To exit, press 'q' after clicking on the 'phase mask' window.
 
@@ -70,6 +70,9 @@ maskRadius = np.abs(args["window"])
 gratingPeriod = args["grating"]
 
 fileStr = 'LG_ch_' + str(beamCharge) + '.bmp'
+
+# change 'correctionMaskFile' according to your correction mask file
+correctionMaskFile = 'CAL_LSH0600780_633nm.bmp';
 
 # generate phase mask for LG beam
 def generate_LG_Mask(beamCharge):
@@ -110,7 +113,7 @@ def apply_correction_mask(image):
     
     SLMcorrectionMask = np.zeros((ImgResY, ImgResX), dtype = "uint8")       
 
-    SLMbmpMask = cv2.imread("mask_750nm.bmp")
+    SLMbmpMask = cv2.imread(correctionMaskFile)
     SLMbmpMask = cv2.cvtColor(SLMbmpMask, cv2.COLOR_BGR2GRAY)
 
     rows,cols = SLMbmpMask.shape
@@ -156,6 +159,10 @@ if slmFlag != True:
     
     if maskRadius > 0:
         image8bit = cv2.bitwise_and(image8bit, image8bit, mask = maskCircle)    
+
+    # apply SLM correction mask provided by manufacturer        
+    if correctionFlag == True:
+       image8bit = apply_correction_mask(image8bit)
                     
     cv2.imshow('phase hologram',image8bit)
     cv2.waitKey()
@@ -177,7 +184,7 @@ else:
             image8bit = cv2.bitwise_and(image8bit, image8bit, mask = maskCircle)    
     
         # apply SLM correction mask provided by manufacturer        
-        if correctionFlag != True:
+        if correctionFlag == True:
            image8bit = apply_correction_mask(image8bit)
 
         image = cv2.resize(image8bit,(320, 240), interpolation = cv2.INTER_CUBIC)
