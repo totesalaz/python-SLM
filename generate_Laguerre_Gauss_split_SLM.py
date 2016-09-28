@@ -100,10 +100,10 @@ def generate_displaced_LG_Mask(beamCharge, gratingPeriod):
         image = np.zeros([ImgResY, ImgResX])
     # if period > 0 ... shift beam to the RIGHT wrt period = 0
     elif gratingPeriod > 0:             
-        image = np.angle(np.exp((2*np.pi*X/gratingPeriod)*1j)+np.exp((beamCharge*np.angle(X+Y*1j))*1j))
+        image = np.angle(np.exp((2*np.pi*X/gratingPeriod)*1j)*np.exp((beamCharge*np.angle(X+Y*1j))*1j))
     # if period < 0 ... shift beam to the LEFT wrt period = 0
     elif gratingPeriod < 0:             
-        image = np.angle(np.exp((2*np.pi*X/gratingPeriod+np.pi)*1j)+np.exp((beamCharge*np.angle(X+Y*1j))*1j))
+        image = np.angle(np.exp((2*np.pi*X/gratingPeriod+np.pi)*1j)*np.exp((beamCharge*np.angle(X+Y*1j))*1j))
 
     image8bit = normalize_image(image)
     
